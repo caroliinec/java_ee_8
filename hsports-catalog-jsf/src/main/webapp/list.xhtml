@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:composition template="template.xhtml">	
+		<f:metadata>
+			<f:viewAction action="#{catalogItemFormBean.init()}" />
+		</f:metadata>
+		<ui:define name="pageHeader">
+			<h:link value="#{msg['form.pageTitle']}" outcome="form"/> | 
+			<h:link value="#{msg['list.pageTitle']}" outcome="list"/>		
+		</ui:define>
+		<ui:define name="body">
+			<h:form>
+				<h:outputLabel value="Search by Name:" />
+				<h:inputText id="searchInput" value="#{catalogItemFormBean.searchText}" />
+				<h:commandButton action="#{catalogItemFormBean.searchByName}" value="Search">
+					<f:ajax execute="searchInput" render="dataTable" />
+				</h:commandButton>
+			</h:form>
+			<h:dataTable id="dataTable" value="#{catalogItemFormBean.items}" var="item">
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:link value="#{item.name}" outcome="item">
+						<f:param name="itemId" value="#{item.itemId}" />
+					</h:link>
+					<h:outputText value="#{item.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Manufacturer</f:facet>
+					<h:outputText value="#{item.manufacturer}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Available Date</f:facet>
+					<h:outputText value="#{item.availableDate}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Description</f:facet>
+					<h:outputText value="#{item.description}" />
+				</h:column>
+				<h:column>
+					<h:link value="Remove" outcome="confirm">
+						<f:param name="itemId" value="#{item.itemId}" />
+					</h:link>
+				</h:column>
+			</h:dataTable>
+	 	</ui:define>
+	</ui:composition>
+</html>

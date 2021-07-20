@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="hsports-catalog">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="hsports-catalog-jsf.war" deploy-path="/" handle="module:/resource/hsports-catalog-jsf/hsports-catalog-jsf">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hsports-catalog-ejb.jar" deploy-path="/" handle="module:/resource/hsports-catalog-ejb/hsports-catalog-ejb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hsports-catalog-jax.war" deploy-path="/" handle="module:/resource/hsports-catalog-jax/hsports-catalog-jax">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
